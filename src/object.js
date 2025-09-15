@@ -85,9 +85,9 @@ function validate(object, schema, depth = 0) {
 			return { valid: false, reason: `Invalid object: ${reason}` };
 		}
 	} else if (schema.type === 'array') {
-		const { valid: array_valid, reason: array_invalid_reason } = validateArray(object, schema);
-		if (!array_valid) {
-			return { valid: false, reason: `Invalid array: ${array_invalid_reason}` };
+		const { valid: arrayValid, reason: arrayInvalidReason } = validateArray(object, schema);
+		if (!arrayValid) {
+			return { valid: false, reason: `Invalid array: ${arrayInvalidReason}` };
 		}
 	} else if (schema.type === 'string') {
 		if (typeof object !== 'string') {

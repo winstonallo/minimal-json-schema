@@ -109,11 +109,11 @@ function validate(schema, depth = 0) {
 			return { valid: false, reason: `Invalid object: ${reason}` };
 		}
 	} else if (schema.type === 'array') {
-		const { valid: array_valid, reason: array_invalid_reason } = validateArray(schema);
-		if (!array_valid) {
+		const { valid: arrayValid, reason: arrayInvalidReason } = validateArray(schema);
+		if (!arrayValid) {
 			return {
 				valid: false,
-				reason: `Invalid array: ${array_invalid_reason}`,
+				reason: `Invalid array: ${arrayInvalidReason}`,
 			};
 		}
 		const { valid, reason } = validate(schema.items, depth + 1);
@@ -121,18 +121,18 @@ function validate(schema, depth = 0) {
 			return { valid: false, reason: `Invalid array: ${reason}` };
 		}
 	} else if (schema.type in ALLOWED_TYPES) {
-		const allowed_for_type = ALLOWED_TYPES[schema.type];
-		for (const value_key of Object.keys(schema)) {
-			if (!allowed_for_type.has(value_key)) {
+		const allowedForType = ALLOWED_TYPES[schema.type];
+		for (const valueKey of Object.keys(schema)) {
+			if (!allowedForType.has(valueKey)) {
 				return {
 					valid: false,
-					reason: `Unexpected schema key '${value_key}' for ${schema.type} instance, expected one of ${allowed_for_type.entries()}`,
+					reason: `Unexpected schema key '${valueKey}' for ${schema.type} instance, expected one of ${allowedForType.entries()}`,
 				};
 			}
-			if (schema.type === 'string' && (value_key === 'minLength' || value_key === 'maxLength') && typeof schema[value_key] !== 'number') {
+			if (schema.type === 'string' && (valueKey === 'minLength' || valueKey === 'maxLength') && typeof schema[valueKey] !== 'number') {
 				return {
 					valid: false,
-					reason: `Invalid string: ${value_key} must be a number (got ${schema[value_key]})`,
+					reason: `Invalid string: ${valueKey} must be a number (got ${schema[valueKey]})`,
 				};
 			}
 		}
