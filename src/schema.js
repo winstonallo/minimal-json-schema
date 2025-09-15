@@ -139,7 +139,7 @@ function validate(schema, depth = 0) {
 	} else {
 		return {
 			valid: false,
-			reason: `Ill-formatted type: ${schema.type} is not a valid JSON schema instance`,
+			reason: `Invalid type: ${schema.type} is not a valid JSON schema instance`,
 		};
 	}
 	return { valid: true };
