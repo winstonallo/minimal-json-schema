@@ -1,0 +1,23 @@
+{
+  "name": "minimal-json-schema",
+  "version": "0.0.1",
+  "description": "Minimal JSON schema validator to avoid dependencies in Node.js projects.",
+  "homepage": "https://github.com/winstonallo/minimal-json-schema#readme",
+  "bugs": {
+    "url": "https://github.com/winstonallo/minimal-json-schema/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/winstonallo/minimal-json-schema.git"
+  },
+  "license": "ISC",
+  "author": "Arthur Bied-Charreton",
+  "type": "module",
+  "main": "lib.js",
+  "scripts": {
+    "test": "node --test ./tests/*"
+  },
+  "devDependencies": {
+    "@types/node": "^24.4.0"
+  }
+}
